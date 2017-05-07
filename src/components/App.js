@@ -9,6 +9,7 @@ import {addTodo,
         toggleTodo,
         updateTodo,
         removeTodo} from '../lib/todoHelpers'
+import {Time} from './Time'
 
 class App extends Component {
     state = {
@@ -72,6 +73,7 @@ class App extends Component {
         const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit
         return (
             <div className="App">
+                <Time />
                 <Header />
                 {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
                 <AddTodo
