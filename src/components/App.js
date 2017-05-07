@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
 import '../App.css'
-import {Header} from './Header'
-import {AddTodo} from './AddTodo'
-import {TodoList} from './TodoList'
+import {Header} from './Header/Header'
+import {TodoList} from './TodoList/TodoList'
 import {addTodo,
         generatedId,
         findById,
         toggleTodo,
         updateTodo,
         removeTodo} from '../lib/todoHelpers'
-import {Time} from './Time'
+
 
 class App extends Component {
     state = {
@@ -65,18 +64,14 @@ class App extends Component {
         this.setState({
             todos: updatedTodos
         })
-        // this.state.todos.splice(id, 1);
-        // this.setState({todoItems: todoItems});
     }
 
     render() {
         const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit
         return (
             <div className="App">
-                <Time />
-                <Header />
                 {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
-                <AddTodo
+                <Header 
                     handleInputChange={this.handleInputChange}
                     currentTodo={this.state.currentTodo}
                     handleSubmit={submitHandler}/>
