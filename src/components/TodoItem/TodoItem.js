@@ -1,12 +1,12 @@
 import React from 'react'
-import '../App.css'
-import {partial} from '../lib/utils'
+import styles from './TodoItem.css'
+import {partial} from '../../lib/utils'
 
 export const TodoItem = (props) => {
     const handleToggle = partial(props.handleToggle, props.id)
     const removeTodo = partial(props.handleRemove, props.id)
     return (
-        <li className="todoItem">
+        <li className={styles.TodoItem}>
             <input
                 type="checkbox"
                 onChange={handleToggle}

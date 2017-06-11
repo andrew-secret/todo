@@ -1,0 +1,16 @@
+.input {
+    padding: 10px;
+    background-color: white;
+    min-width: 500px;
+    border: none;
+    border-radius: 3px;
+}
+
+.button {
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    padding: 8px 12px;
+}

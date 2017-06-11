@@ -1,6 +1,5 @@
 import React from 'react'
-import '../App.css'
-import {TodoItem} from './TodoItem'
+import {TodoItem} from '../TodoItem/TodoItem'
 
 export const TodoList = (props) => {
     return (

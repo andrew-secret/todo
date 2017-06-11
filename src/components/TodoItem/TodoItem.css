@@ -1,0 +1,9 @@
+.TodoItem {
+    max-width: 1080px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #E6E7F0;
+    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.10);
+    list-style: none;
+}
+

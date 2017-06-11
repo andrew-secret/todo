@@ -1,12 +1,11 @@
 import React from 'react'
-import '../App.css'
 
 export const Time = (props) => {
     return (
-        <header className="todoApp-header">
-            <h1>
+        <header className="time">
+            <span>
                 Es ist genau {new Date().toLocaleTimeString()}
-            </h1>
+            </span>
         </header>
     )
 }
