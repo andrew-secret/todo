@@ -9,14 +9,12 @@ import {addTodo,
         updateTodo,
         removeTodo} from '../lib/todoHelpers'
 
+const todosStore = JSON.parse(localStorage.getItem('todos')) || [];
 
 class App extends Component {
     state = {
-        todos: [
-            {id: 1, task: 'go to toilet and poo', isComplete: true},
-            {id: 2, task: 'wash my hands after that', isComplete: false},
-            {id: 3, task: 'buy some peanuts', isComplete: false}
-        ],
+        todos: todosStore,
+        date: new Date(),
         currentTodo: ''
     }
 
@@ -24,7 +22,6 @@ class App extends Component {
         const todo = findById(id, this.state.todos)
         const toggled = toggleTodo(todo)
         const updatedTodos = updateTodo(this.state.todos, toggled)
-
         this.setState({todos: updatedTodos})
     }
 
@@ -36,10 +33,10 @@ class App extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-
         const newId = generatedId()
         const newTodo = {id: newId, task: this.state.currentTodo, isComplete: false}
         const updatedTodos = addTodo(this.state.todos, newTodo)
+        localStorage.setItem('todos', JSON.stringify(updatedTodos))
 
         this.setState({
             todos: updatedTodos,
@@ -58,11 +55,27 @@ class App extends Component {
 
     handleRemove = (id, e) => {
         e.preventDefault()
-        // console.log(this.id)
         const updatedTodos = removeTodo(this.state.todos, id)
-
+        localStorage.setItem('todos', JSON.stringify(updatedTodos))
         this.setState({
-            todos: updatedTodos
+            todos: updatedTodos,
+        })
+    }
+
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+        )
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID)
+    }
+
+    tick = () => {
+        this.setState({
+            date: new Date()
         })
     }
 
@@ -74,7 +87,8 @@ class App extends Component {
                 <Header 
                     handleInputChange={this.handleInputChange}
                     currentTodo={this.state.currentTodo}
-                    handleSubmit={submitHandler}/>
+                    handleSubmit={submitHandler}
+                    date={this.state.date}/>
                 <TodoList
                     handleToggle={this.handleToggle}
                     todos={this.state.todos}
