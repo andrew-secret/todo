@@ -8,12 +8,12 @@ export const Header = (props) => {
     return (
         <header className={ styles.Header }>
             <h1 className={ styles.headline}>
-                Das ist meine Todo-App!
+                Todo-list
             </h1>
         <AddTodo
             handleInputChange={props.handleInputChange}
             handleSubmit={props.handleSubmit}/>
-        <Time />
+        <Time date={props.date}/>
         </header>
     )
 }
