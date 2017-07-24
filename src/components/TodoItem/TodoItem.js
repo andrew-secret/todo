@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './TodoItem.css'
+import {Button} from '../Button/Button'
 import {partial} from '../../lib/utils'
+
 
 export const TodoItem = (props) => {
     const handleToggle = partial(props.handleToggle, props.id)
@@ -13,15 +15,27 @@ export const TodoItem = (props) => {
                 checked={props.isComplete} />
             {props.task}
             {props.isComplete === true ? (
-                <input
+                <Button
+                    label="remove2"
                     type="button"
-                    value="remove"
+                    value="test"
                     onClick={removeTodo}/>
             ) : (
                 <input
                     type="button"
                     value="edit" />
             )}
+            <input
+                type="button"
+                value="test" 
+                onClick={removeTodo}/>
+
+            <div className={styles.TodoExpandItem}>
+                Test Pest!!
+                <input
+                    type="text"
+                    placeholder="Type your description here..."/>
+            </div>
         </li>
     )
 }

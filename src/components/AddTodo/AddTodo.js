@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './AddTodo.css'
+import {Button} from '../Button/Button'
 
 export const AddTodo = (props) => {
     return (
@@ -16,6 +17,10 @@ export const AddTodo = (props) => {
                 type="submit"
                 value="Add"
             />
+            <Button
+                label="ADD"
+                type="submit"
+                onClick={props.handleSubmit}/>
         </form>
     )
 }
