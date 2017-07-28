@@ -12,11 +12,6 @@ export const AddTodo = (props) => {
                 placeholder="add your to do!"
                 onChange={props.handleInputChange}
                 value={props.currentTodo}/>
-            <input
-                className={styles.button}
-                type="submit"
-                value="Add"
-            />
             <Button
                 label="ADD"
                 type="submit"

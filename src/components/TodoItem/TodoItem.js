@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './TodoItem.css'
-import {Button} from '../Button/Button'
 import {partial} from '../../lib/utils'
+import {Button} from '../Button/Button'
 
 
 export const TodoItem = (props) => {
@@ -27,7 +27,7 @@ export const TodoItem = (props) => {
             )}
             <input
                 type="button"
-                value="test" 
+                value="test"
                 onClick={removeTodo}/>
 
             <div className={styles.TodoExpandItem}>
