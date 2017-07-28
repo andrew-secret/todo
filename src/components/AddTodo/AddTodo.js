@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './AddTodo.css'
+import {Button} from '../Button/Button'
 
 export const AddTodo = (props) => {
     return (
@@ -11,11 +12,10 @@ export const AddTodo = (props) => {
                 placeholder="add your to do!"
                 onChange={props.handleInputChange}
                 value={props.currentTodo}/>
-            <input
-                className={styles.button}
+            <Button
+                label="ADD"
                 type="submit"
-                value="Add"
-            />
+                onClick={props.handleSubmit}/>
         </form>
     )
 }
