@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {TodoItem} from '../TodoItem/TodoItem'
 
 export const TodoList = (props) => {
@@ -8,7 +9,7 @@ export const TodoList = (props) => {
                 {props.todos.map(todo => <TodoItem
                     handleToggle={props.handleToggle}
                     handleRemove={props.handleRemove}
-                    key={todo.key}
+                    key={todo.id}
                     {...todo}/>)}
             </ul>
         </div>
@@ -16,5 +17,5 @@ export const TodoList = (props) => {
 }
 
 TodoList.propTypes = {
-    todos: React.PropTypes.array.isRequired
+    todos: PropTypes.array.isRequired
 }

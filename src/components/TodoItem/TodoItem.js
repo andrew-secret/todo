@@ -8,7 +8,7 @@ export const TodoItem = (props) => {
     const handleToggle = partial(props.handleToggle, props.id)
     const removeTodo = partial(props.handleRemove, props.id)
     return (
-        <li className={styles.TodoItem}>
+        <li className={styles.TodoItem} key={props.id}>
             <input
                 type="checkbox"
                 onChange={handleToggle}
