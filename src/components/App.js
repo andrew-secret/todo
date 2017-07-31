@@ -8,6 +8,7 @@ import {addTodo,
         toggleTodo,
         updateTodo,
         removeTodo} from '../lib/todoHelpers'
+import * as firebase from 'firebase'
 
 const todosStore = JSON.parse(localStorage.getItem('todos')) || [];
 
@@ -63,14 +64,23 @@ class App extends Component {
     }
 
     componentDidMount() {
+        console.log('componentDidMount')
         this.timerID = setInterval(
             () => this.tick(),
             1000
         )
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerID)
+        const rootRef = firebase.database().ref()
+        rootRef.set({ todos: todosStore})
+        .then(function() {
+            return rootRef.once("value")
+        })
+        .then(function(snapshot) {
+            const data = snapshot.val()
+            console.log('data', data)
+            // data is { "name": "Ada", "age": 36 }
+            // data.name === "Ada"
+            // data.age === 36
+        });
     }
 
     tick = () => {

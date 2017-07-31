@@ -8,7 +8,7 @@ export const TodoItem = (props) => {
     const handleToggle = partial(props.handleToggle, props.id)
     const removeTodo = partial(props.handleRemove, props.id)
     return (
-        <li className={styles.TodoItem}>
+        <li className={styles.TodoItem} key={props.id}>
             <input
                 type="checkbox"
                 onChange={handleToggle}
@@ -25,17 +25,15 @@ export const TodoItem = (props) => {
                     type="button"
                     value="edit" />
             )}
-            <input
-                type="button"
-                value="test"
-                onClick={removeTodo}/>
+            {props.isComplete === true ? (
+                <div className={styles.TodoExpandItem}>
+                    Test Pest!!
+                    <input
+                        type="text"
+                        placeholder="Type your description here..."/>
+                </div>
+            ): null}
 
-            <div className={styles.TodoExpandItem}>
-                Test Pest!!
-                <input
-                    type="text"
-                    placeholder="Type your description here..."/>
-            </div>
         </li>
     )
 }
