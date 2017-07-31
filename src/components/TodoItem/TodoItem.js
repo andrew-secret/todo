@@ -25,17 +25,15 @@ export const TodoItem = (props) => {
                     type="button"
                     value="edit" />
             )}
-            <input
-                type="button"
-                value="test"
-                onClick={removeTodo}/>
+            {props.isComplete === true ? (
+                <div className={styles.TodoExpandItem}>
+                    Test Pest!!
+                    <input
+                        type="text"
+                        placeholder="Type your description here..."/>
+                </div>
+            ): null}
 
-            <div className={styles.TodoExpandItem}>
-                Test Pest!!
-                <input
-                    type="text"
-                    placeholder="Type your description here..."/>
-            </div>
         </li>
     )
 }
